@@ -14,7 +14,7 @@ body {
 .container {
     width: 960px;
     height: 960px;
-    background-color: gray;
+    background-color: silver;
     display: flex;
     flex-flow: wrap;
 }
