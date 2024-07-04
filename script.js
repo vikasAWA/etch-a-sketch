@@ -1,4 +1,7 @@
 const container = document.querySelector('.container');
+const gridSizeButton = document.createElement('button');
+gridSizeButton.textContent = "Choose Grid Size";
+document.body.appendChild(gridSizeButton);
 
 //function to fill container with the squares
 function makeSquaresGrid(squaresPerSide) {
@@ -6,10 +9,19 @@ function makeSquaresGrid(squaresPerSide) {
         let div = document.createElement('div');
         div.classList.add('square');
         container.appendChild(div);
+        div.style.flexBasis = `${600/squaresPerSide}px`;
     }
 }
 
-makeSquaresGrid(16);
+makeSquaresGrid(10);
+
+// function to get gridSize.
+function getGridSize() {
+    squares = parseInt(prompt("Enter Grid Size"));
+    return squares;
+}
+
+
 
 //Function to get rainbow effect on squares.
 function rainbow() {
