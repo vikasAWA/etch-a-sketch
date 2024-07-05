@@ -18,6 +18,7 @@ body {
     background-color: #FFFFFF;
     display: flex;
     flex-flow: wrap;
+    
 }
 
 .container > div {
@@ -34,6 +35,7 @@ button {
     background-color: blueviolet;
     border: 2px solid whitesmoke;
     font-family: cursive;
+    box-shadow: 2px 2px 2px #fefefe;
 }
 
 .title {
@@ -42,6 +44,7 @@ button {
     font-family: cursive;
     background-color: tomato;
     text-align: center;
-    color: rgb(43, 40, 37);;
+    color: white;
+    text-shadow: 2px 2px silver;
 
 }
