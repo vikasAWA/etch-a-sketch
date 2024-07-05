@@ -13,16 +13,25 @@ function makeSquaresGrid(squaresPerSide) {
     }
 }
 
-makeSquaresGrid(10);
 
 // function to get gridSize.
 function getGridSize() {
-    squares = parseInt(prompt("Enter Grid Size"));
-    return squares;
+    Array.from(container.children).forEach(child => {
+        child.remove();
+    });
+    squares = parseInt(prompt("Enter Grid Size(limit: 100) "));
+    if (squares === undefined) {
+        return makeSquaresGrid(16);
+    } else {
+        return makeSquaresGrid(squares);
+    }
+    
 }
 
+makeSquaresGrid(18);
 
 
+console.log(container)
 //Function to get rainbow effect on squares.
 function rainbow() {
     return `rgb(${Math.floor(Math.random() * 255)} ${Math.floor(Math.random() * 255)} ${Math.floor(Math.random() * 255)} / ${Math.random() * 0.999
@@ -37,7 +46,11 @@ function changeColor(event) {
 }
 
 //Added an mouseover event listener to each square. Square will change it's color whenever we hover over it.
-Array.from(container.children).forEach((child) => {
-    child.addEventListener("mouseover", changeColor)
-})
+// Array.from(container.children).forEach((child) => {
+//     child.addEventListener("mouseover", changeColor);
+// })
+
+container.addEventListener('mouseover', changeColor)
+
+gridSizeButton.addEventListener('click', getGridSize);
 
