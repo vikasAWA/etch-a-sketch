@@ -32,6 +32,8 @@ button {
     border-radius: 60px;
     padding: 14px;
     background-color: blueviolet;
+    border: 2px solid whitesmoke;
+    font-family: cursive;
 }
 
 .title {
