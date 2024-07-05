@@ -1,7 +1,10 @@
 const container = document.querySelector('.container');
 const gridSizeButton = document.createElement('button');
+const clearButton = document.createElement('button')
 gridSizeButton.textContent = "Choose Grid Size";
 document.body.appendChild(gridSizeButton);
+clearButton.textContent = "Clear";
+document.body.appendChild(clearButton);
 
 //function to fill container with the squares
 function makeSquaresGrid(squaresPerSide) {
@@ -19,16 +22,15 @@ function getGridSize() {
     Array.from(container.children).forEach(child => {
         child.remove();
     });
-    squares = parseInt(prompt("Enter Grid Size(limit: 100) "));
-    if (squares === undefined) {
+    squares = prompt("Enter Grid Size(limit: 100) ");
+    if (squares == undefined || +squares > 100) {
         return makeSquaresGrid(16);
     } else {
-        return makeSquaresGrid(squares);
-    }
-    
+        return makeSquaresGrid(+squares);
+    }   
 }
 
-makeSquaresGrid(18);
+makeSquaresGrid(16);
 
 
 console.log(container)
@@ -39,18 +41,28 @@ function rainbow() {
     })`;
 }
 
+function colorClassic() {
+    return '#000000';
+}
+
 
 // Function to change color on an event
 function changeColor(event) {
     event.target.style.backgroundColor = rainbow();
 }
 
-//Added an mouseover event listener to each square. Square will change it's color whenever we hover over it.
-// Array.from(container.children).forEach((child) => {
-//     child.addEventListener("mouseover", changeColor);
-// })
-
+// Adding Event delegation on container
 container.addEventListener('mouseover', changeColor)
 
+/
 gridSizeButton.addEventListener('click', getGridSize);
+
+// Adding clear feature
+clearButton.addEventListener('click', () => {
+    Array.from(container.children).forEach(child => {
+        child.style.backgroundColor = "#FFFFFF";
+    })
+})
+
+
 
