@@ -1,10 +1,17 @@
 const container = document.querySelector('.container');
 const gridSizeButton = document.createElement('button');
-const clearButton = document.createElement('button')
+const clearButton = document.createElement('button');
+const eraser = document.createElement('button');
+const colorButton = document.createElement('button');
+
 gridSizeButton.textContent = "Choose Grid Size";
 document.body.appendChild(gridSizeButton);
 clearButton.textContent = "Clear";
 document.body.appendChild(clearButton);
+eraser.textContent = "Eraser";
+document.body.appendChild(eraser);
+colorButton.textContent = 'Color';
+document.body.appendChild(colorButton);
 
 //function to fill container with the squares
 function makeSquaresGrid(squaresPerSide) {
@@ -33,7 +40,6 @@ function getGridSize() {
 makeSquaresGrid(16);
 
 
-console.log(container)
 //Function to get rainbow effect on squares.
 function rainbow() {
     return `rgb(${Math.floor(Math.random() * 255)} ${Math.floor(Math.random() * 255)} ${Math.floor(Math.random() * 255)} / ${Math.random() * 0.999
@@ -46,10 +52,11 @@ function colorClassic() {
 }
 
 
-// Function to change color on an event
+// Function to change colorButton on an event
 function changeColor(event) {
     event.target.style.backgroundColor = rainbow();
 }
+
 
 // Adding Event delegation on container
 container.addEventListener('mouseover', changeColor)
@@ -64,5 +71,19 @@ clearButton.addEventListener('click', () => {
     })
 })
 
+// Adding eraser feature 
+const eraseMe = (e) => {
+    e.target.style.backgroundColor = '#FFFFFF';
+}
+
+eraser.addEventListener('click', () => {
+    container.addEventListener('mouseover', eraseMe);
+})
+
+// Adding event listener to colorButton button 
+colorButton.addEventListener('click', () => {
+    container.removeEventListener('mouseover', eraseMe)
+    container.addEventListener('mouseover', changeColor);
+})
 
 
